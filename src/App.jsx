@@ -5,14 +5,14 @@ import { ArrowRight, ArrowDown, Github, Linkedin, Mail, Menu, X, Database, Brain
 const projects = [
   {
     id: 1,
-    title: "Analisis Sentimen Layanan Rumah Sakit Berdasarkan Ulasan Google Maps di Kota X Menggunakan Model LSTM",
+    title: "Sentiment Analysis of Hospital Services in X Based On Google Maps Reviews Using LSTM Model ",
     category: "Natural Language Processing",
-    description: "Mengevaluasi kepuasan pasien rumah sakit dengan mengekstraksi wawasan dari ribuan ulasan layanan menggunakan model Deep Learning.",
+    description: "Proyek ini membangun model LSTM untuk mengklasifikasikan sentimen ulasan Google Maps rumah sakit secara otomatis. Sistem memproses ribuan ulasan untuk memberikan insight kualitas layanan secara cepat dan akurat. Hasilnya membantu rumah sakit memantau kepuasan pasien secara real-time.",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000",
     color: "bg-blue-500",
-    problem: "Rumah sakit menerima ribuan ulasan setiap bulan. Menganalisis umpan balik ini secara manual sangat memakan waktu dan tidak konsisten.",
-    solution: "Mengembangkan pipeline NLP end-to-end menggunakan arsitektur BERT. Model dilatih dengan dataset ulasan kesehatan lokal.",
-    impact: "Meningkatkan kecepatan analisis sebesar 90% (real-time). Mengidentifikasi 3 area utama perbaikan layanan dalam bulan pertama.",
+    problem: "Rumah sakit di Kota X menerima ribuan ulasan dari Google Maps setiap bulan. Evaluasi kualitas layanan masih dilakukan secara manual, memakan waktu, tidak konsisten, dan sering terlambat dalam mengidentifikasi masalah pelayanan.",
+    solution: "Membangun model sentiment analysis berbasis LSTM untuk mengklasifikasikan ulasan menjadi sentimen positif dan negatif. Model dilatih menggunakan dataset ulasan rumah sakit yang telah dibersihkan dan diproses secara NLP (tokenization, stopword removal, embedding).",
+    impact: "Akurasi model mencapai 82% dalam pengujian. Mengurangi waktu analisis dari berhari-hari menjadi real-time otomatis. Rumah sakit dapat mengidentifikasi isu layanan utama (kecepatan pelayanan, keramahan staf, fasilitas) dengan lebih cepat untuk pengambilan keputusan.",
     techStack: ["Python", "TensorFlow", "Pandas"],
     githubLink: "https://colab.research.google.com/drive/1KtRZa4kPpsaec97QhWFL66VvXIkdbm8a?usp=sharing",
     demoLink: "https://sa-hospitalpwt.netlify.app"
@@ -21,12 +21,12 @@ const projects = [
     id: 2,
     title: "Emotion Classification of Sundanese Text Using LSTM and BERT Models",
     category: "Machine Learning",
-    description: "Sistem cerdas yang mampu mendeteksi dan mengklasifikasikan nuansa emosi manusia dari input teks untuk analisis psikologis otomatis.",
+    description: "Proyek ini mengembangkan model LSTM dan BERT untuk mengklasifikasikan emosi dalam teks berbahasa Sunda. Dataset disusun dari komentar media sosial dan dilabeli ke berbagai kategori emosi. Hasil penelitian memberikan baseline NLP penting bagi bahasa daerah Indonesia.",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1000",
     color: "bg-purple-500",
-    problem: "Chatbot layanan pelanggan sering gagal menangani pelanggan yang marah karena ketidakmampuan sistem mendeteksi emosi.",
+    problem: "Mengembangkan sistem klasifikasi emosi Bahasa Sunda menggunakan dua pendekatan LSTM dengan word embedding khusus dan BERT-based multilingual model untuk menangkap konteks antar-kata secara lebih dalam. Dataset disusun dari komentar media sosial berbahasa Sunda yang telah dilabeli ke dalam beberapa kategori emosi.",
     solution: "Membangun model klasifikasi multi-kelas menggunakan LSTM dan Word2Vec untuk mendeteksi 6 emosi dasar manusia.",
-    impact: "Akurasi 89% pada data uji. Meningkatkan Customer Satisfaction Score (CSAT) sebesar 15% karena penanganan yang lebih empatik.",
+    impact: "Model BERT meningkatkan akurasi hingga 80%, lebih tinggi dibandingkan LSTM. Memberikan baseline pertama untuk analisis emosi dalam Bahasa Sunda. Mendukung pengembangan aplikasi edukasi, moderasi konten, dan riset linguistik lokal berbasis AI.",
     techStack: ["Python", "PyTorch", "BERT (Hugging Face)", "Pandas"],
     githubLink: "https://colab.research.google.com/drive/1t-LKfw3OQnL4_JcxyWpzUJ-UU0diwjZh?usp=sharing",
     demoLink: "https://ec-sundanese.netlify.app"
@@ -35,12 +35,12 @@ const projects = [
     id: 3,
     title: "Scrum Task Assignments Optimization: A Multi-Objective Goal Programming Approach",
     category: "Operations Research",
-    description: "Algoritma penugasan otomatis (assignment problem) untuk memaksimalkan produktivitas tim dan efisiensi alur kerja.",
+    description: "Proyek ini merancang model optimasi multi-objective goal programming untuk mengotomatisasi pembagian tugas pada tim Scrum. Sistem mempertimbangkan kapasitas tim dan kompleksitas task agar distribusi kerja lebih seimbang. Hasilnya membantu meningkatkan efisiensi perencanaan sprint.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
     color: "bg-indigo-500",
-    problem: "Manajer proyek menghabiskan 4-5 jam per minggu untuk menetapkan tugas secara manual, seringkali menghasilkan beban kerja yang tidak seimbang.",
-    solution: "Mengimplementasikan algoritma Hungarian dan Linear Programming menggunakan Python (SciPy).",
-    impact: "Mengurangi waktu perencanaan manajerial hingga 95%. Mencapai keseimbangan beban kerja tim dengan varians <5%.",
+    problem: "Terjaidnya overload pada beberapa anggota, tidak meratanya beban kerja, dan keterlambatan penyelesaian sprint.",
+    solution: "Membangun model optimasi multi-objective goal programming untuk mengalokasikan tugas secara otomatis dengan mempertimbangkan: kapasitas dan keahlian anggota tim, tingkat kompleksitas tugas (story points), penyelesaian sprint tepat waktu. Model menghasilkan rekomendasi assignment yang optimal untuk setiap sprint.",
+    impact: "Mengurangi workload imbalance. Meningkatkan penyelesaian sprint tepat waktu. Memberikan sistem rekomendasi berbasis data yang membantu Scrum Master melakukan perencanaan sprint yang lebih objektif dan efisien.",
     techStack: ["Python", "Pandas", "OR-Tools", "Gurobi"],
     githubLink: "https://github.com/TK-Bunga-Matahari/shinchan/blob/main/project1_task-management/solution/solution.ipynb",
     demoLink: null
@@ -49,12 +49,12 @@ const projects = [
     id: 4,
     title: "AUTOAGRA: Drone Pertanian Minimalis",
     category: "Website Development",
-    description: "Algoritma penugasan otomatis (assignment problem) untuk memaksimalkan produktivitas tim dan efisiensi alur kerja.",
+    description: "AUTOAGRA adalah aplikasi web untuk memonitor penggunaan drone pertanian, termasuk waktu terbang, pengisian tangki pestisida, tanggal operasional, serta kondisi cuaca. Sistem ini membantu petani atau operator drone mencatat aktivitas secara terstruktur dan real-time. Platform dibangun agar memudahkan pengawasan efisiensi operasi drone dalam kegiatan pertanian modern.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
     color: "bg-indigo-500",
-    problem: "Manajer proyek menghabiskan 4-5 jam per minggu untuk menetapkan tugas secara manual, seringkali menghasilkan beban kerja yang tidak seimbang.",
-    solution: "Mengimplementasikan algoritma Hungarian dan Linear Programming menggunakan Python (SciPy).",
-    impact: "Mengurangi waktu perencanaan manajerial hingga 95%. Mencapai keseimbangan beban kerja tim dengan varians <5%.",
+    problem: "Pencatatan penggunaan Drone mulai dari waktu terbang, pengisian tangki pestisida. Pencatatan yang tidak terstruktur dapat membuat evaluasi efisiensi operasional menjadi lambat dan tidak akurat.",
+    solution: "Membangun aplikasi web AUTOAGRA yang memungkinkan admin mencatat waktu terbang drone, jumlah pengisian tangki, tanggal operasional. Sistem dirancang dengan antarmuka sederhana agar mudah digunakan di lapangan.",
+    impact: "Meningkatkan akurasi pencatatan operasional hingga real-time. Mempermudah analisis efisiensi penggunaan drone untuk kegiatan pertanian. Mengurangi kesalahan pencatatan manual dan mempercepat proses pengambilan keputusan berbasis data.",
     techStack: ["Laravel", "PHP", "MySQL", "Tailwind CSS"],
     githubLink: "#",
     demoLink: null
@@ -424,7 +424,7 @@ const ExpertiseSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-20">
            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Keahlian Teknis</h2>
            <p className="text-gray-500 dark:text-gray-400 text-lg">
-             Mengkombinasikan pemahaman matematika yang kuat dengan teknologi modern untuk memecahkan masalah nyata.
+             {/* Mengkombinasikan pemahaman matematika yang kuat dengan teknologi modern untuk memecahkan masalah nyata. */}
            </p>
         </div>
 
@@ -459,7 +459,7 @@ const Footer = () => {
     <footer className="py-20 px-6 md:px-12 bg-white dark:bg-neutral-900 border-t border-gray-100 dark:border-neutral-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-           Tertarik berkolaborasi dengan data?
+           Tertarik berkolaborasi?
         </h2>
         <a href="mailto:fauzirfann1@gmail.com" className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-semibold hover:bg-indigo-600 dark:hover:bg-gray-200 transition-colors mb-12">
            <Mail size={20} /> Hubungi Fauzi
@@ -467,7 +467,7 @@ const Footer = () => {
         
         <div className="w-full border-t border-gray-100 dark:border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <span className="text-xl font-bold text-indigo-900 dark:text-white">FAUZI.</span>
-            <p className="text-gray-400 dark:text-gray-500 text-sm">© 2025 Portfolio.</p>
+            <p className="text-gray-400 dark:text-gray-500 text-sm">© 2025 Portfolio Fauzi.</p>
             <div className="flex gap-6">
                <a href="https://www.linkedin.com/in/fauziirfans" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><Linkedin size={20} /></a>
                <a href="https://github.com/fauzirfann" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={20} /></a>
