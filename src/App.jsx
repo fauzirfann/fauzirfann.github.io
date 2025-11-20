@@ -42,7 +42,7 @@ const projects = [
     solution: "Mengimplementasikan algoritma Hungarian dan Linear Programming menggunakan Python (SciPy).",
     impact: "Mengurangi waktu perencanaan manajerial hingga 95%. Mencapai keseimbangan beban kerja tim dengan varians <5%.",
     techStack: ["Python", "Pandas", "OR-Tools", "Gurobi"],
-    githubLink: "#",
+    githubLink: "https://github.com/TK-Bunga-Matahari/shinchan/blob/main/project1_task-management/solution/solution.ipynb",
     demoLink: null
   },
   { 
