@@ -14,8 +14,8 @@ const projects = [
     solution: "Mengembangkan pipeline NLP end-to-end menggunakan arsitektur BERT. Model dilatih dengan dataset ulasan kesehatan lokal.",
     impact: "Meningkatkan kecepatan analisis sebesar 90% (real-time). Mengidentifikasi 3 area utama perbaikan layanan dalam bulan pertama.",
     techStack: ["Python", "TensorFlow", "Pandas"],
-    githubLink: "#",
-    demoLink: "#"
+    githubLink: "https://colab.research.google.com/drive/1KtRZa4kPpsaec97QhWFL66VvXIkdbm8a?usp=sharing",
+    demoLink: "https://sa-hospitalpwt.netlify.app"
   },
   {
     id: 2,
@@ -28,8 +28,8 @@ const projects = [
     solution: "Membangun model klasifikasi multi-kelas menggunakan LSTM dan Word2Vec untuk mendeteksi 6 emosi dasar manusia.",
     impact: "Akurasi 89% pada data uji. Meningkatkan Customer Satisfaction Score (CSAT) sebesar 15% karena penanganan yang lebih empatik.",
     techStack: ["Python", "PyTorch", "BERT (Hugging Face)", "Pandas"],
-    githubLink: "#",
-    demoLink: "#"
+    githubLink: "https://colab.research.google.com/drive/1t-LKfw3OQnL4_JcxyWpzUJ-UU0diwjZh?usp=sharing",
+    demoLink: "https://ec-sundanese.netlify.app"
   },
   {
     id: 3,
