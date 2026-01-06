@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowDown, Github, Linkedin, Mail, Menu, X, Database, Brain, BarChart3, ExternalLink, Sun, Moon } from 'lucide-react';
+import { section } from 'framer-motion/client';
+
+const scrollToSection = (e, id) => {
+  e.preventDefault(); // Mencegah loncat langsung
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
 
 const projects = [
   {
@@ -26,7 +38,7 @@ const projects = [
     color: "bg-purple-500",
     problem: "Mengembangkan sistem klasifikasi emosi Bahasa Sunda menggunakan dua pendekatan LSTM dengan word embedding khusus dan BERT-based multilingual model untuk menangkap konteks antar-kata secara lebih dalam. Dataset disusun dari komentar media sosial berbahasa Sunda yang telah dilabeli ke dalam beberapa kategori emosi.",
     solution: "Membangun model klasifikasi multi-kelas menggunakan LSTM dan Word2Vec untuk mendeteksi 6 emosi dasar manusia.",
-    impact: "Model BERT meningkatkan akurasi hingga 80%, lebih tinggi dibandingkan LSTM. Memberikan baseline pertama untuk analisis emosi dalam Bahasa Sunda. Mendukung pengembangan aplikasi edukasi, moderasi konten, dan riset linguistik lokal berbasis AI.",
+    impact: "Model BERT meningkatkan akurasi hingga 10%, lebih tinggi dibandingkan LSTM. Memberikan baseline pertama untuk analisis emosi dalam Bahasa Sunda. Mendukung pengembangan aplikasi edukasi, moderasi konten, dan riset linguistik lokal berbasis AI.",
     techStack: ["Python", "PyTorch", "BERT (Hugging Face)", "Pandas"],
     githubLink: "https://colab.research.google.com/drive/1t-LKfw3OQnL4_JcxyWpzUJ-UU0diwjZh?usp=sharing",
     demoLink: "https://ec-sundanese.netlify.app"
@@ -80,21 +92,33 @@ const services = [
 ];
 
 
-const Navbar = ({ isDark, toggleTheme }) => {
+const Navbar = ({ isDark, toggleTheme, onMenuClick, activeView }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavClick = (view) => {
+    onMenuClick(view);
+    setIsOpen(false);
+  }
+  
+  // Handler untuk link navbar agar smooth scroll juga
+  const handleLinkClick = (e, id) => {
+    scrollToSection(e, id);
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 py-6 px-6 md:px-12 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md transition-all border-b border-gray-100 dark:border-neutral-800">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center gap-8">
-          <a href="#" className="text-2xl font-bold tracking-tight text-indigo-900 dark:text-white flex items-center gap-2">
+          <a href="#" onClick={() => handleNavClick('home')} className="text-2xl font-bold tracking-tight text-indigo-900 dark:text-white flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-indigo-600"></div>
             FAUZI IRFAN S.
           </a>
           
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500 dark:text-neutral-400 ml-8">
-            <a href="#projects" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
-            <a href="#services" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Expertise</a>
+            <a href="#projects" onClick={(e) => handleLinkClick(e, 'projects')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+            <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Expertise</a>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
           </div>
         </div>
 
@@ -111,14 +135,16 @@ const Navbar = ({ isDark, toggleTheme }) => {
               <a href="https://www.linkedin.com/in/fauziirfans" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><Linkedin size={20} /></a>
               <a href="https://github.com/fauzirfann" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={20} /></a>
            </div>
-           <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800 dark:text-white hover:text-indigo-600 transition-colors md:hidden">
-             {isOpen ? <X size={28} /> : <Menu size={28} />}
-           </button>
+           {activeView === 'home' && (
+             <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800 dark:text-white hover:text-indigo-600 transition-colors md:hidden">
+               {isOpen ? <X size={28} /> : <Menu size={28} />}
+             </button>
+           )}
         </div>
       </div>
 
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && activeView === 'home' && (
           <motion.div 
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -126,9 +152,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
             className="bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 mt-4 overflow-hidden shadow-lg md:hidden absolute top-full left-0 right-0"
           >
             <div className="p-6 flex flex-col gap-4 text-center">
-               <a href="#projects" onClick={() => setIsOpen(false)} className="text-lg font-medium text-gray-700 dark:text-gray-300">Projects</a>
-               <a href="#services" onClick={() => setIsOpen(false)} className="text-lg font-medium text-gray-700 dark:text-gray-300">Expertise</a>
-               <a href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-medium text-indigo-600 dark:text-indigo-400">Contact</a>
+               <a href="#projects" onClick={() => handleLinkClick(e, 'projects')} className="text-lg font-medium text-gray-700 dark:text-gray-300">Projects</a>
+               <a href="#services" onClick={() => handleLinkClick(e, 'services')} className="text-lg font-medium text-gray-700 dark:text-gray-300">Expertise</a>
+               <a href="#contact" onClick={() => handleLinkClick(e, 'contact')} className="text-lg font-medium text-indigo-600 dark:text-indigo-400">Contact</a>
             </div>
           </motion.div>
         )}
@@ -163,6 +189,7 @@ const Hero = () => {
           
           <motion.a 
             href="#projects"
+            onClick={(e) => scrollToSection(e, 'projects')}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -456,30 +483,33 @@ const ExpertiseSection = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-20 px-6 md:px-12 bg-white dark:bg-neutral-900 border-t border-gray-100 dark:border-neutral-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-           Tertarik berkolaborasi?
-        </h2>
-        <a href="mailto:fauzirfann1@gmail.com" className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-semibold hover:bg-indigo-600 dark:hover:bg-gray-200 transition-colors mb-12">
-           <Mail size={20} /> Hubungi Fauzi
-        </a>
-        
-        <div className="w-full border-t border-gray-100 dark:border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <span className="text-xl font-bold text-indigo-900 dark:text-white">FAUZI.</span>
-            <p className="text-gray-400 dark:text-gray-500 text-sm">© 2025 Portfolio Fauzi.</p>
-            <div className="flex gap-6">
-               <a href="https://www.linkedin.com/in/fauziirfans" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><Linkedin size={20} /></a>
-               <a href="https://github.com/fauzirfann" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={20} /></a>
-            </div>
+    <section id="contact">
+      <footer className="py-20 px-6 md:px-12 bg-white dark:bg-neutral-900 border-t border-gray-100 dark:border-neutral-800 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
+            Tertarik berkolaborasi?
+          </h2>
+          <a href="mailto:fauzirfann1@gmail.com" className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-semibold hover:bg-indigo-600 dark:hover:bg-gray-200 transition-colors mb-12">
+            <Mail size={20} /> Hubungi Fauzi
+          </a>
+          
+          <div className="w-full border-t border-gray-100 dark:border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+              <span className="text-xl font-bold text-indigo-900 dark:text-white">FAUZI.</span>
+              <p className="text-gray-400 dark:text-gray-500 text-sm">© 2025 Portfolio Fauzi.</p>
+              <div className="flex gap-6">
+                <a href="https://www.linkedin.com/in/fauziirfans" className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><Linkedin size={20} /></a>
+                <a href="https://github.com/fauzirfann" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><Github size={20} /></a>
+              </div>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </section>
   );
 };
 
 const App = () => {
   const [isDark, setIsDark] = useState(false);
+  const [view, setView] = useState('home');
 
   useEffect(() => {
     if (isDark) {
